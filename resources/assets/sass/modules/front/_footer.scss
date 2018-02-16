@@ -1,0 +1,38 @@
+.site-footer {
+    background-color: $footerBackground;
+    width: 100%;
+    min-height: 300px;
+    color: white;
+
+    .container {
+        padding-top: 40px;
+    }
+
+    hr {
+        border-color: $brand-wise;
+    }
+}
+
+
+.site-footer-nav {
+    text-align: right;
+
+    li {
+        margin-right: 10px;
+        margin-bottom: 10px;
+        font-size: 15px;
+
+        a { color: white }
+    }
+
+    @media (max-width: $screen-xs) {
+        li {
+            display: block;
+            margin-bottom: 5px;
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+            background-color: $brand-wise;
+        }
+    }
+}

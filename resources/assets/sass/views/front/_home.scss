@@ -1,0 +1,15 @@
+.home-services {
+    padding-top: 40px;
+    background-color: $body-bg;
+
+    ._order {
+        padding-bottom: 60px;
+
+        .order-btns {
+            @media (max-width: $screen-xs) {
+                text-align: center;
+                .btn { width: 100%; margin-bottom: 10px }
+            }
+        }
+    }
+}
