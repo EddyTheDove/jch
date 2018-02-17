@@ -87,7 +87,7 @@ export default {
                 }, {
                     id: '24460590-12e5-11e8-b642-0ed5f89f718b',
                     name: 'Australian PPSR',
-                    amount: '25.00',
+                    amount: '9.00',
                     description: ''
                 }
             ]

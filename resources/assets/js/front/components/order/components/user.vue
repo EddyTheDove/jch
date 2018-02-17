@@ -1,7 +1,7 @@
 <template lang="html">
     <div class="_order">
         <h3 class="bold">Personal Details</h3>
-        <span class="primary pointer" @click="previous"><i class="ion-chevron-left"></i> Car details</span>
+        <span class="primary pointer" @click="previous"><i class="ion-chevron-left"></i> Edit car details</span>
 
         <form class="_form mt-20" @prevent.submit>
             <div class="row">
