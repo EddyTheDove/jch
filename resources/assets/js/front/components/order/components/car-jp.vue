@@ -96,8 +96,8 @@
 
         <div class="order-btns mt-40">
             <z-btn elevated class="mr-10" @clicked="nextStep()">
-                <i class="ion-chevron-right"></i>
-                Continue with {{ report.name }}
+                <i class="ion-checkmark"></i>
+                Confirm Car Details
             </z-btn>
 
             <z-btn elevated :colour="'teal'" @clicked="showSample()">
@@ -111,7 +111,6 @@
 <script>
 export default {
     name: 'car-japan',
-    props: ['report'],
 
     data () {
         return {

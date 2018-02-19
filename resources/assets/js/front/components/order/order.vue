@@ -10,7 +10,7 @@
 
             <div class="col-sm-8 col-md-9">
                 <Report :report="report" @next="showCar" v-show="step == 1"></Report>
-                <JapanCar :report="report" @next="showUser" v-show="step == 2"></JapanCar>
+                <JapanCar @next="showUser" v-show="step == 2"></JapanCar>
                 <UserDetails @next="showPayment" @previous="showCar" v-show="step == 3"></UserDetails>
             </div>
         </div>
@@ -60,8 +60,8 @@ export default {
         },
 
         showPayment (user) {
-            this.step = 4
             this.user = user
+            window.location = '/payment'
         },
 
         async getReportTypes () {

@@ -25,8 +25,8 @@
 
         <div class="order-btns mt-40">
             <z-btn elevated class="mr-10" @clicked="nextStep()">
-                <i class="ion-android-cart"></i>
-                Order {{ report.name }}
+                <i class="ion-plus"></i>
+                Request {{ report.name }}
             </z-btn>
 
             <z-btn elevated :colour="'teal'" @clicked="showSample()">

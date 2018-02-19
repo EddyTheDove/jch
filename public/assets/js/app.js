@@ -56810,8 +56810,8 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
             this.car = car;
         },
         showPayment: function showPayment(user) {
-            this.step = 4;
             this.user = user;
+            window.location = '/payment';
         },
         getReportTypes: function () {
             var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee() {
@@ -57782,9 +57782,9 @@ var render = function() {
             }
           },
           [
-            _c("i", { staticClass: "ion-android-cart" }),
+            _c("i", { staticClass: "ion-plus" }),
             _vm._v(
-              "\n                Order " +
+              "\n                Request " +
                 _vm._s(_vm.report.name) +
                 "\n            "
             )
@@ -58040,7 +58040,6 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'car-japan',
-    props: ['report'],
 
     data: function data() {
         return {
@@ -58520,12 +58519,8 @@ var render = function() {
             }
           },
           [
-            _c("i", { staticClass: "ion-chevron-right" }),
-            _vm._v(
-              "\n            Continue with " +
-                _vm._s(_vm.report.name) +
-                "\n        "
-            )
+            _c("i", { staticClass: "ion-checkmark" }),
+            _vm._v("\n            Confirm Car Details\n        ")
           ]
         ),
         _vm._v(" "),
@@ -58669,6 +58664,86 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'ReportTypes',
@@ -58740,7 +58815,7 @@ var render = function() {
       { staticClass: "primary pointer", on: { click: _vm.previous } },
       [
         _c("i", { staticClass: "ion-chevron-left" }),
-        _vm._v(" Edit car details")
+        _vm._v(" Edit car details\n    ")
       ]
     ),
     _vm._v(" "),
@@ -58860,14 +58935,250 @@ var render = function() {
                     {
                       name: "show",
                       rawName: "v-show",
-                      value: _vm.errors.has("firstname"),
-                      expression: "errors.has('firstname')"
+                      value: _vm.errors.has("lastname"),
+                      expression: "errors.has('lastname')"
                     }
                   ],
                   staticClass: "has-error"
                 },
-                [_vm._v(_vm._s(_vm.errors.first("firstname")))]
+                [_vm._v(_vm._s(_vm.errors.first("lastname")))]
               )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-sm-6" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Email *")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "validate",
+                    rawName: "v-validate",
+                    value: "required|email",
+                    expression: "'required|email'"
+                  },
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.user.email,
+                    expression: "user.email"
+                  }
+                ],
+                staticClass: "form-control input-lg input-white",
+                attrs: {
+                  type: "email",
+                  name: "email",
+                  placeholder: "e.g: johndoe@email.com"
+                },
+                domProps: { value: _vm.user.email },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.user, "email", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "span",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.errors.has("email"),
+                      expression: "errors.has('email')"
+                    }
+                  ],
+                  staticClass: "has-error"
+                },
+                [_vm._v(_vm._s(_vm.errors.first("email")))]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm-6" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Mobile *")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "validate",
+                    rawName: "v-validate",
+                    value: "required",
+                    expression: "'required'"
+                  },
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.user.mobile,
+                    expression: "user.mobile"
+                  }
+                ],
+                staticClass: "form-control input-lg input-white",
+                attrs: {
+                  type: "text",
+                  name: "mobile",
+                  placeholder: "e.g: 0422 334 455"
+                },
+                domProps: { value: _vm.user.mobile },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.user, "mobile", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "span",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.errors.has("mobile"),
+                      expression: "errors.has('mobile')"
+                    }
+                  ],
+                  staticClass: "has-error"
+                },
+                [_vm._v(_vm._s(_vm.errors.first("mobile")))]
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-sm-5" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Address")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.user.address,
+                    expression: "user.address"
+                  }
+                ],
+                staticClass: "form-control input-lg input-white",
+                attrs: {
+                  type: "text",
+                  name: "address",
+                  placeholder: "e.g: 23 Jump St"
+                },
+                domProps: { value: _vm.user.address },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.user, "address", $event.target.value)
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm-3" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Suburb")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.user.suburb,
+                    expression: "user.suburb"
+                  }
+                ],
+                staticClass: "form-control input-lg input-white",
+                attrs: {
+                  type: "text",
+                  name: "suburb",
+                  placeholder: "e.g: Liverpool"
+                },
+                domProps: { value: _vm.user.suburb },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.user, "suburb", $event.target.value)
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm-2" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("State")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.user.state,
+                    expression: "user.state"
+                  }
+                ],
+                staticClass: "form-control input-lg input-white",
+                attrs: { type: "text", name: "state", placeholder: "e.g: NSW" },
+                domProps: { value: _vm.user.state },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.user, "state", $event.target.value)
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm-2" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Postcode")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.user.postcode,
+                    expression: "user.postcode"
+                  }
+                ],
+                staticClass: "form-control input-lg input-white",
+                attrs: {
+                  type: "text",
+                  name: "postcode",
+                  placeholder: "e.g: 2000"
+                },
+                domProps: { value: _vm.user.postcode },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.user, "postcode", $event.target.value)
+                  }
+                }
+              })
             ])
           ])
         ])
@@ -58890,8 +59201,8 @@ var render = function() {
             }
           },
           [
-            _c("i", { staticClass: "ion-chevron-right" }),
-            _vm._v("\n            Submit Report Request\n        ")
+            _c("i", { staticClass: "ion-checkmark" }),
+            _vm._v("\n            Confirm Personal Details\n        ")
           ]
         ),
         _vm._v(" "),
@@ -59111,7 +59422,6 @@ var render = function() {
                 expression: "step == 2"
               }
             ],
-            attrs: { report: _vm.report },
             on: { next: _vm.showUser }
           }),
           _vm._v(" "),
