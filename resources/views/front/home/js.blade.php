@@ -1,4 +1,5 @@
 <script type="text/javascript">
+
     jssor_1_slider_init = function() {
         var jssor_1_SlideoTransitions = [
           [{b:-1,d:1,o:-0.7}],
@@ -57,4 +58,6 @@
 
 
     jssor_1_slider_init()
+
+
 </script>

@@ -1,0 +1,19 @@
+._block {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background-color: white;
+    color: $brand-dark;
+
+    ._block-title {
+        text-align: center;
+        padding: 10px 0;
+        border-bottom: 1px solid inherit;
+    }
+
+    &._block-radius { border-radius: 4px }
+    &._block-info { background-color: $brand-info; color: $brand-dark }
+    &._block-primary { background-color: $brand-primary; color: white }
+    &._block-grey { background-color: $brand-greyer; color: white }
+
+}

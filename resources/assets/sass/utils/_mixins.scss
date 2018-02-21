@@ -29,6 +29,13 @@ $min: 25;
     }
 }
 
+@mixin paddingLeft{
+    @while $max > 0 {
+        .pl-#{$max}{padding-left: $max+px}
+        $max: $max - 10;
+    }
+}
+
 @mixin paddingLeftRight{
     @while $max > 0 {
         .plr-#{$max}{padding-left: $max+px; padding-right: $max+px;}
@@ -98,4 +105,11 @@ $min: 25;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+@mixin fontSizes{
+    @while $min > 9 {
+        .fs-#{$min}{font-size: $min+px}
+        $min: $min - 1;
+    }
 }

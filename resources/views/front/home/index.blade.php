@@ -8,19 +8,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="Japanese car history">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link href="{{ asset('assets/css/app.css') }}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/assets/css/app.css') }}">
+
+    <script>
+        var _reports = <?php echo json_encode($reports);?>;
+    </script>
 </head>
 <body>
     <div id="app">
         @include('front.includes.header')
         @include('front.includes.nav')
         @include('front.home.slider')
-        @include('front.home.services')
+        @include('front.home.reports')
         @include('front.includes.footer')
     </div>
 </body>
 
-<script src="/assets/js/app.js"></script>
-<script src="/assets/js/slider.min.js"></script>
+<script src="{{ asset('/assets/js/slider.min.js') }}"></script>
+<script src="{{ asset('/assets/js/app.js') }}"></script>
 @include('front.home.js')
 </html>

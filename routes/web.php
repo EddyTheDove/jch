@@ -12,3 +12,4 @@
 */
 
 Route::get('/', 'views\front\HomeController@home');
+Route::get('checkout', 'views\front\PaymentController@checkout');

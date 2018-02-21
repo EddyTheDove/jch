@@ -61,37 +61,11 @@ export default {
 
         showPayment (user) {
             this.user = user
-            window.location = '/payment'
+            window.location = '/checkout'
         },
 
-        async getReportTypes () {
-            this.reports = [
-                {
-                    id: 'cf08c0cc-12e4-11e8-b642-0ed5f89f718b',
-                    name: 'Basic Report',
-                    amount: '40.00',
-                    description: ''
-
-                }, {
-                    id: '14971328-12e5-11e8-b642-0ed5f89f718b',
-                    name: 'Intermediate Report',
-                    amount: '85.00',
-                    description: ''
-
-                }, {
-                    id: '1c9839f8-12e5-11e8-b642-0ed5f89f718b',
-                    name: 'Full Report',
-                    amount: '110.00',
-                    description: ''
-
-                }, {
-                    id: '24460590-12e5-11e8-b642-0ed5f89f718b',
-                    name: 'Australian PPSR',
-                    amount: '9.00',
-                    description: ''
-                }
-            ]
-
+        getReportTypes () {
+            this.reports = _reports || []
             this.report = this.reports[0]
         }
     }

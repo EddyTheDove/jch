@@ -9,9 +9,12 @@
 @import "utils/check";
 @import "utils/tooltip";
 @import "utils/form";
+@import "utils/block";
+@import "utils/alert";
 
 @include paddingAll;
 @include paddingTop;
+@include paddingLeft;
 @include paddingBottom;
 @include paddingLeftRight;
 @include marginAll;
@@ -21,9 +24,12 @@
 @include marginRight;
 @include fontSizes;
 @include fontWeight;
+@include fontSizes;
 
 @import "modules/front/nav";
 @import "modules/front/header";
 @import "modules/front/slider";
 @import "modules/front/footer";
+@import "modules/front/page";
 @import "views/front/home";
+@import "views/front/checkout";
