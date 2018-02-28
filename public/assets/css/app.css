@@ -8460,6 +8460,10 @@ h5 {
   text-align: right;
 }
 
+.bg-white {
+  background-color: white;
+}
+
 .btn-teal {
   background-color: #636d7e;
   color: white;
@@ -10085,6 +10089,30 @@ h5 {
 
 .full-page.page-white {
   background-color: white;
+}
+
+.full-page .address h4 {
+  margin-bottom: 40px;
+}
+
+.full-page .address .details {
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.full-page .address .details i {
+  color: #005FBF;
+  margin-right: 20px;
+  font-size: 30px;
+}
+
+.full-page .address .details span {
+  color: #636d7e;
+  margin-left: 50px;
+}
+
+.full-page .address .details li {
+  padding-left: 40px;
 }
 
 .home-services {

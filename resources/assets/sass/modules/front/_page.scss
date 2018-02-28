@@ -5,4 +5,31 @@
     &.page-white {
         background-color: white;
     }
+
+    .address {
+
+        h4 {
+            margin-bottom: 40px;
+        }
+
+        .details {
+            margin-bottom: 20px;
+            font-size: 16px;
+
+            i {
+                color: $brand-primary;
+                margin-right: 20px;
+                font-size: 30px;
+            }
+
+            span {
+                color: $brand-teal;
+                margin-left: 50px;
+            }
+
+            li {
+                padding-left: 40px;
+            }
+        }
+    }
 }

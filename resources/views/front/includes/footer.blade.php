@@ -11,10 +11,10 @@
         <div class="site-footer-nav">
             <ul class="list-inline">
                 <li>
-                    <a href="/basic">Basic Report</a>
+                    <a href="/reports/basic">Basic Report</a>
                 </li>
-                <li><a href="/intermediate">Intermediate Report</a></li>
-                <li><a href="/full">Full Report</a></li>
+                <li><a href="/reports/intermediate">Intermediate Report</a></li>
+                <li><a href="/reports/full">Full Report</a></li>
                 <li><a href="/contact">Contact</a></li>
             </ul>
         </div>

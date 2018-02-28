@@ -131,7 +131,7 @@ table > tbody > tr > td { padding-left: 10px; height: 40px }
                 <tr class="accent" style="font-size:16px;">
                     <td></td>
                     <td></td>
-                    <td class="bold">TOTAL PAID</td>
+                    <td class="bold">TOTAL + GST</td>
                     <td class="bold fs16">${{ $order->amount }} AUD</td>
                 </tr>
             </tbody>

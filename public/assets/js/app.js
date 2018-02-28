@@ -56820,7 +56820,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
             this.reports = _reports || [];
             this.report = this.reports[0];
 
-            if (_report) this.report = _report;
+            if (typeof _report !== 'undefined') this.report = _report;
         },
         submitForm: function () {
             var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee() {

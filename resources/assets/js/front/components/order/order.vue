@@ -71,7 +71,7 @@ export default {
             this.reports = _reports || []
             this.report = this.reports[0]
 
-            if (_report) this.report = _report
+            if (typeof _report !== 'undefined') this.report = _report
         },
 
         async submitForm () {
