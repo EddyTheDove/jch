@@ -3,6 +3,6 @@
         Japanese Car History
     </div>
     <div class="logo-description">
-        Check Australian & Japanese car history
+        Check Japanese car history
     </div>
 </section>
