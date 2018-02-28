@@ -10,7 +10,9 @@
     <div class="mt-100 pb-80 text-center">
         <h1>Error 404</h1>
 
-        <h2 class="mt-10">Page not found</h2>
+        <h2 class="mt-10">
+            {{ $exception->getMessage() ?: 'Page not found' }}
+        </h2>
     </div>
 </section>
 

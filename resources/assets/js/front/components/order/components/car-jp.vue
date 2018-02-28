@@ -12,7 +12,7 @@
                             classes: ['info'],
                             targetClasses: ['it-has-a-tooltip']
                             }">
-                            VIN or Chassis Number *
+                            Original VIN or Chassis Number *
                             <i class="ion-help-circled"></i>
                         </label>
 
@@ -20,10 +20,10 @@
                             type="text"
                             name="vin_chassis"
                             class="form-control input-lg input-white"
-                            placeholder="e.g: BNR32-305366"
+                            placeholder="e.g: BNR32-445566"
                             v-validate="'required'"
                             data-vv-as="VIN or Chassis number"
-                            v-model="car.vin_chassis">
+                            v-model="car.japanese_vin">
                             <span v-show="errors.has('vin_chassis')" class="has-error">{{ errors.first('vin_chassis') }}<br> </span>
                         <a href="">Where to find my VIN or Chassis number?</a>
                     </div>
@@ -91,6 +91,25 @@
                     </div>
                 </div>
             </div>
+
+
+
+            <div class="mt-10">
+                <label class="css-input css-checkbox css-checkbox-primary">
+                    <input type="checkbox" name="ppsr" v-model="car.ppsr" :value="'1'">
+                    <span></span> Include Australian PPSR in the report
+                </label>
+
+
+                <div class="row" v-if="car.ppsr == '1'">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Australian VIN (17 Characters)</label>
+                            <input type="text" class="form-control input-lg input-white" placeholder="e.g: 6U900BNR32445566" v-model="car.australian_vin">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </form>
 
 
@@ -142,9 +161,11 @@ export default {
                 year: '',
                 model: '',
                 make: '',
-                color: '',
+                colour: '',
                 export_year: '',
-                vin_chassis: ''
+                japanese_vin: '',
+                ppsr: false,
+                australian_vin: ''
             }
         },
 

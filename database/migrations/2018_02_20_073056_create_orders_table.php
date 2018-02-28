@@ -17,6 +17,8 @@ class CreateOrdersTable extends Migration
             $table->increments('id');
             $table->integer('number');
             $table->integer('report_id')->unsigned();
+            $table->integer('cart_id')->unsigned();
+            $table->integer('amount')->default(0);
             $table->string('firstname');
             $table->string('lastname');
             $table->string('email')->nullable();
@@ -25,7 +27,9 @@ class CreateOrdersTable extends Migration
             $table->string('suburb')->nullable();
             $table->string('state')->nullable();
             $table->string('postcode')->nullable();
+            $table->string('stripe_charge_id')->nullable();
             $table->enum('status', ['placed', 'delivered'])->default('placed');
+            $table->boolean('ppsr')->default(false);
             $table->timestamps();
         });
     }

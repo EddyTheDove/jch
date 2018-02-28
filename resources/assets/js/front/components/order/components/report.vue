@@ -1,7 +1,12 @@
 <template lang="html">
     <div class="_order">
         <h3 class="bold">{{ report.name }}</h3>
-        <h4><span class="bold primary">${{ report.amount }} AUD</span>  </h4>
+        <h4 class="bold primary mt-10">
+            ${{ report.amount }} AUD
+            <span class="teal">
+                <i class="ion-minus fs-14"></i> Includes PPSR
+            </span>
+        </h4>
 
         <div class="_text mt-20" v-html="report.description"></div>
 

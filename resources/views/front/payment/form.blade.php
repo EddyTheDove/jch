@@ -1,5 +1,6 @@
 <div class="cell example example3">
-    <form class="_form">
+    <form class="_form" method="post" action="/checkout">
+        {{ csrf_field() }}
         <div class="row">
             <div class="col-sm-6">
                 <div id="example3-card-number" class="field empty form-control input-lg"></div>

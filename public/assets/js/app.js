@@ -56734,14 +56734,20 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_report__ = __webpack_require__(48);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_report___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_report__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_car_jp__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_car_jp___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_car_jp__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_user__ = __webpack_require__(56);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_user___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_user__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_report_types__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_report_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_report_types__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_report__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_report___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_report__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_car_jp__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_car_jp___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_car_jp__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_user__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_user___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_user__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_report_types__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_report_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_report_types__);
+
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
 //
 //
 //
@@ -56770,10 +56776,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'new-order',
     components: {
-        Report: __WEBPACK_IMPORTED_MODULE_0__components_report___default.a,
-        JapanCar: __WEBPACK_IMPORTED_MODULE_1__components_car_jp___default.a,
-        ReportTypes: __WEBPACK_IMPORTED_MODULE_3__components_report_types___default.a,
-        UserDetails: __WEBPACK_IMPORTED_MODULE_2__components_user___default.a
+        Report: __WEBPACK_IMPORTED_MODULE_1__components_report___default.a,
+        JapanCar: __WEBPACK_IMPORTED_MODULE_2__components_car_jp___default.a,
+        ReportTypes: __WEBPACK_IMPORTED_MODULE_4__components_report_types___default.a,
+        UserDetails: __WEBPACK_IMPORTED_MODULE_3__components_user___default.a
     },
 
     data: function data() {
@@ -56782,12 +56788,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             report: {},
             user: {},
             car: {},
-            step: 1
+            step: 1,
+            token: ''
         };
     },
 
     mounted: function mounted() {
         this.getReportTypes();
+        var _token = document.head.querySelector('meta[name="csrf-token"]');
+        this.token = _token.content;
     },
 
 
@@ -56805,12 +56814,57 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         showPayment: function showPayment(user) {
             this.user = user;
-            window.location = '/checkout';
+            this.submitForm();
         },
         getReportTypes: function getReportTypes() {
             this.reports = _reports || [];
             this.report = this.reports[0];
-        }
+
+            if (_report) this.report = _report;
+        },
+        submitForm: function () {
+            var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee() {
+                var response;
+                return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+                    while (1) {
+                        switch (_context.prev = _context.next) {
+                            case 0:
+                                _context.prev = 0;
+                                _context.next = 3;
+                                return axios.post('/report', {
+                                    car: this.car,
+                                    user: this.user,
+                                    report: this.report
+                                });
+
+                            case 3:
+                                response = _context.sent;
+
+
+                                window.location = '/checkout';
+                                _context.next = 10;
+                                break;
+
+                            case 7:
+                                _context.prev = 7;
+                                _context.t0 = _context['catch'](0);
+
+                                console.log(_context.t0);
+
+                            case 10:
+                            case 'end':
+                                return _context.stop();
+                        }
+                    }
+                }, _callee, this, [[0, 7]]);
+            }));
+
+            function submitForm() {
+                return _ref.apply(this, arguments);
+            }
+
+            return submitForm;
+        }()
     }
 });
 
@@ -56889,6 +56943,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -56917,10 +56976,9 @@ var render = function() {
   return _c("div", { staticClass: "_order" }, [
     _c("h3", { staticClass: "bold" }, [_vm._v(_vm._s(_vm.report.name))]),
     _vm._v(" "),
-    _c("h4", [
-      _c("span", { staticClass: "bold primary" }, [
-        _vm._v("$" + _vm._s(_vm.report.amount) + " AUD")
-      ])
+    _c("h4", { staticClass: "bold primary mt-10" }, [
+      _vm._v("\n        $" + _vm._s(_vm.report.amount) + " AUD\n        "),
+      _vm._m(0)
     ]),
     _vm._v(" "),
     _c("div", {
@@ -56971,7 +57029,17 @@ var render = function() {
     )
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "teal" }, [
+      _c("i", { staticClass: "ion-minus fs-14" }),
+      _vm._v(" Includes PPSR\n        ")
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -57150,6 +57218,25 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'car-japan',
@@ -57183,9 +57270,11 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
                 year: '',
                 model: '',
                 make: '',
-                color: '',
+                colour: '',
                 export_year: '',
-                vin_chassis: ''
+                japanese_vin: '',
+                ppsr: false,
+                australian_vin: ''
             };
         },
         showSample: function showSample() {
@@ -58058,7 +58147,7 @@ var render = function() {
                 },
                 [
                   _vm._v(
-                    "\n                        VIN or Chassis Number *\n                        "
+                    "\n                        Original VIN or Chassis Number *\n                        "
                   ),
                   _c("i", { staticClass: "ion-help-circled" })
                 ]
@@ -58075,24 +58164,24 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.car.vin_chassis,
-                    expression: "car.vin_chassis"
+                    value: _vm.car.japanese_vin,
+                    expression: "car.japanese_vin"
                   }
                 ],
                 staticClass: "form-control input-lg input-white",
                 attrs: {
                   type: "text",
                   name: "vin_chassis",
-                  placeholder: "e.g: BNR32-305366",
+                  placeholder: "e.g: BNR32-445566",
                   "data-vv-as": "VIN or Chassis number"
                 },
-                domProps: { value: _vm.car.vin_chassis },
+                domProps: { value: _vm.car.japanese_vin },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.$set(_vm.car, "vin_chassis", $event.target.value)
+                    _vm.$set(_vm.car, "japanese_vin", $event.target.value)
                   }
                 }
               }),
@@ -58386,6 +58475,95 @@ var render = function() {
               )
             ])
           ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "mt-10" }, [
+          _c(
+            "label",
+            { staticClass: "css-input css-checkbox css-checkbox-primary" },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.car.ppsr,
+                    expression: "car.ppsr"
+                  }
+                ],
+                attrs: { type: "checkbox", name: "ppsr" },
+                domProps: {
+                  value: "1",
+                  checked: Array.isArray(_vm.car.ppsr)
+                    ? _vm._i(_vm.car.ppsr, "1") > -1
+                    : _vm.car.ppsr
+                },
+                on: {
+                  change: function($event) {
+                    var $$a = _vm.car.ppsr,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = "1",
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 && (_vm.car.ppsr = $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          (_vm.car.ppsr = $$a
+                            .slice(0, $$i)
+                            .concat($$a.slice($$i + 1)))
+                      }
+                    } else {
+                      _vm.$set(_vm.car, "ppsr", $$c)
+                    }
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("span"),
+              _vm._v(" Include Australian PPSR in the report\n            ")
+            ]
+          ),
+          _vm._v(" "),
+          _vm.car.ppsr == "1"
+            ? _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-sm-6" }, [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", [_vm._v("Australian VIN (17 Characters)")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.car.australian_vin,
+                          expression: "car.australian_vin"
+                        }
+                      ],
+                      staticClass: "form-control input-lg input-white",
+                      attrs: {
+                        type: "text",
+                        placeholder: "e.g: 6U900BNR32445566"
+                      },
+                      domProps: { value: _vm.car.australian_vin },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.car,
+                            "australian_vin",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ])
+                ])
+              ])
+            : _vm._e()
         ])
       ]
     ),

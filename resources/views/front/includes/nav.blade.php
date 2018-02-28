@@ -9,11 +9,10 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li class="{{ Request::is('/') ? 'active' : '' }}"><a href="/">Home</a></li>
-                <li><a href="/basic"> Basic Report</a></li>
-                <li><a href="/intermediate"> Intermediate Report</a></li>
-                <li><a href="/Full"> Full Report</a></li>
-                <li><a href="/ppsr">Australian PPSR</a></li>
-                <li><a href="/contact">Contact</a></li>
+                <li class="{{ Request::is('reports/basic') ? 'active' : '' }}"><a href="/reports/basic"> Basic Report</a></li>
+                <li class="{{ Request::is('reports/intermediate') ? 'active' : '' }}"><a href="/reports/intermediate"> Intermediate Report</a></li>
+                <li class="{{ Request::is('reports/full') ? 'active' : '' }}"><a href="/reports/full"> Full Report</a></li>
+                <li class="{{ Request::is('contact') ? 'active' : '' }}"><a href="/contact">Contact</a></li>
             </ul>
         </div>
     </div>

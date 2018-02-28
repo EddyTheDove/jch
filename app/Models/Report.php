@@ -12,4 +12,8 @@ class Report extends Model
     public function getAmountAttribute ($value) {
         return sprintf("%.2f", $value / 100);
     }
+
+    public function fullAmount () {
+        return $this->amount;
+    }
 }

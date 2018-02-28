@@ -1,6 +1,6 @@
 <script src="https://js.stripe.com/v3/"></script>
 <script type="text/javascript">
-var stripe = Stripe('pk_test_6pRNASCoBOKtIshFeQd4XMUh');
+var stripe = Stripe('pk_test_l2CNcKIbuabhTXfH9BKiES8V');
 
 function registerElements(elements, exampleName) {
     var formClass = '.' + exampleName;
@@ -31,6 +31,15 @@ function registerElements(elements, exampleName) {
                 input.setAttribute('disabled', 'true');
             }
         );
+    }
+
+    function stripeTokenHandler(token) {
+        var hiddenInput = document.createElement('input')
+        hiddenInput.setAttribute('type', 'hidden')
+        hiddenInput.setAttribute('name', 'stripeToken')
+        hiddenInput.setAttribute('value', token.id)
+        form.appendChild(hiddenInput)
+        form.submit()
     }
 
     // Listen for errors from each Element, and show error messages in the UI.
@@ -94,9 +103,7 @@ function registerElements(elements, exampleName) {
             example.classList.remove('submitting');
 
             if (result.token) {
-                // If we received a token, show the token ID.
-                example.querySelector('.token').innerText = result.token.id;
-                example.classList.add('submitted');
+                stripeTokenHandler(result.token);
             } else {
                 // Otherwise, un-disable inputs.
                 enableInputs();

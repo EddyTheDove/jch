@@ -20,10 +20,10 @@
                                     <h5 class="bold">Car Details Summary</h5>
                                     <div class="pb-20">
                                         <ul class="list-unstyled">
-                                            <li><strong>2014 Nissan Elgrand</strong> </li>
-                                            <li><strong>VIN/Chassis:</strong> BNR32305366</li>
-                                            <li><strong>Year of export:</strong> 2017</li>
-                                            <li><strong>Original Colour:</strong> N/A</li>
+                                            <li><strong>{{ $car->year . ' ' . $car->make . ' ' . $car->model }}</strong> </li>
+                                            <li><strong>VIN/Chassis:</strong> {{ $car->japanese_vin }}</li>
+                                            <li><strong>Year of export:</strong> {{ $car->export_year ?? 'N/A' }}</li>
+                                            <li><strong>Original Colour:</strong> {{ $car->colour ?? 'N/A' }}</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -32,10 +32,15 @@
                                     <h5 class="bold">Personal Details Summary</h5>
                                     <div class="pb-20">
                                         <ul class="list-unstyled">
-                                            <li><strong>John Doe</strong> </li>
-                                            <li><strong>Email:</strong> johndoe@email.com</li>
-                                            <li><strong>Mobile:</strong> 0422334455</li>
-                                            <li><strong>Address:</strong> 22 Jump St, Sydney, NSW, 2000</li>
+                                            <li><strong>{{ $user->firstname . ' ' . $user->lastname }}</strong> </li>
+                                            <li><strong>Email:</strong> {{ $user->email }}</li>
+                                            <li><strong>Mobile:</strong> {{ $user->mobile }}</li>
+
+                                            @if (isset($user->address))
+                                            <li><strong>Address:</strong> {{ $user->address . ', ' . $user->suburb . ', ' . $user->state . ', ' . $user->postcode }}</li>
+                                            @else
+                                                <li><strong>Address:</strong> N/A</li>
+                                            @endif
                                         </ul>
                                     </div>
                                 </div>
@@ -58,8 +63,8 @@
                             </div>
 
                             <div class="pl-20 pb-20">
-                                <h5>Intermediate Report</h5>
-                                <h5 class="fw-600">Total: $110.00</h5>
+                                <h5>{{ $report->name }}</h5>
+                                <h5 class="fw-500">Total: ${{ $report->amount }} AUD</h5>
                             </div>
                         </div>
                     </div>

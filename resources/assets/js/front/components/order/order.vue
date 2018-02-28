@@ -37,11 +37,14 @@ export default {
         report: {},
         user: {},
         car: {},
-        step: 1
+        step: 1,
+        token: ''
     }),
 
     mounted () {
         this.getReportTypes()
+        const _token = document.head.querySelector('meta[name="csrf-token"]');
+        this.token = _token.content
     },
 
     methods: {
@@ -61,12 +64,28 @@ export default {
 
         showPayment (user) {
             this.user = user
-            window.location = '/checkout'
+            this.submitForm()
         },
 
         getReportTypes () {
             this.reports = _reports || []
             this.report = this.reports[0]
+
+            if (_report) this.report = _report
+        },
+
+        async submitForm () {
+            try {
+                const response = await axios.post('/report', {
+                    car: this.car,
+                    user: this.user,
+                    report: this.report
+                })
+
+                window.location = '/checkout'
+            } catch (error) {
+                console.log(error);
+            }
         }
     }
 }
