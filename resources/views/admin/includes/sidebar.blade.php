@@ -20,8 +20,8 @@
             </a>
         </li>
 
-        <li class="{{ Request::is('admin/pages*') ? 'active' : '' }}">
-            <a href="{{ route('pages.index' )}}">
+        <li class="{{ Request::is('admin/orders*') ? 'active' : '' }}">
+            <a href="{{ route('orders.index' )}}">
                 <i class="ion-android-cart"></i>
                 Orders
             </a>

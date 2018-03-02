@@ -16,4 +16,12 @@ class Order extends Model
     public function report () {
         return $this->belongsTo(Report::class);
     }
+
+    public function car () {
+        return $this->belongsTo(Car::class, 'cart_id');
+    }
+
+    public function fullname () {
+        return $this->firstname . ' ' . $this->lastname;
+    }
 }

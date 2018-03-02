@@ -38,6 +38,7 @@ h5 { font-size: 1.1em }
 .fw-600 { font-weight: 600 }
 .pointer { cursor: pointer }
 .text-right { text-align: right }
+.capitalize { text-transform: capitalize }
 
 .btn-teal { background-color: $brand-teal; color: white }
 .btn-dark { background-color: $brand-dark; color: white }
@@ -50,4 +51,24 @@ h5 { font-size: 1.1em }
     &:hover,
     &:focus { color: white }
     i { font-size: 1.2em; margin-right: 5px }
+}
+
+.pagination-lg {
+    > li {
+        &:last-child {
+            > a,
+            > span {
+                border-bottom-right-radius: 3px;
+                border-top-right-radius: 3px;
+            }
+        }
+
+        &:first-child {
+            > a,
+            > span {
+                border-bottom-left-radius: 3px;
+                border-top-left-radius: 3px;
+            }
+        }
+    }
 }

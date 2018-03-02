@@ -82,10 +82,10 @@ class PaymentController extends Controller
         ]);
 
         // save client's car
-        $car = $this->saveCar($car);
+        $savedCar = $this->saveCar($car);
 
         // Place new order for the client
-        $order = $this->placeOrder($report, $user, $car, $charge);
+        $order = $this->placeOrder($report, $user, $savedCar, $charge, $car);
 
         // Generate invoice
         $filename = public_path('/storage/pdfs/' . $order->number . '.pdf');
@@ -111,7 +111,7 @@ class PaymentController extends Controller
      * @param  [type] $charge [description]
      * @return [type]         [description]
      */
-    private function placeOrder ($report, $user, $car, $charge)
+    private function placeOrder ($report, $user, $savedCar, $charge, $car)
     {
         $number = 1001101;
         $lastOrder = Order::orderBy('id', 'desc')->first();
@@ -123,12 +123,13 @@ class PaymentController extends Controller
         return Order::create([
             'number'        => $number,
             'report_id'     => $report->id,
-            'cart_id'       => $car->id,
+            'cart_id'       => $savedCar->id,
             'amount'        => $report->amount,
             'firstname'     => $user->firstname,
             'lastname'      => $user->lastname,
             'email'         => $user->email,
             'mobile'        => $user->mobile,
+            'ppsr'          => $car->ppsr,
             'address'       => $user->address ?: '',
             'suburb'        => $user->suburb ?: '',
             'state'         => $user->state ?: '',
