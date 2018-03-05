@@ -15,47 +15,43 @@
                     {{ csrf_field() }}
 
                     <div class="row mt-40">
-                        <div class="col-sm-8">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label>First Name*</label>
-                                        <input type="text" name="firstname" class="form-control input-lg" required placeholder="Enter your first name">
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label>Last Name*</label>
-                                        <input type="text" name="lastname" class="form-control input-lg" required placeholder="Enter your last name">
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label>Email*</label>
-                                        <input type="email" name="email" class="form-control input-lg" required placeholder="email@domain.com">
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label>Phone Number</label>
-                                        <input type="text" name="phone" class="form-control input-lg" placeholder="Phone Number">
-                                    </div>
-                                </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>First Name*</label>
+                                <input type="text" name="firstname" class="form-control input-lg" required placeholder="Enter your first name">
                             </div>
                         </div>
 
-                        <div class="col-sm-4">
+                        <div class="col-sm-6">
                             <div class="form-group">
-                                <label>Comment</label>
-                                <textarea name="comment" rows="6" class="form-control" placeholder="Enter your message"></textarea>
+                                <label>Last Name*</label>
+                                <input type="text" name="lastname" class="form-control input-lg" required placeholder="Enter your last name">
                             </div>
+                        </div>
 
-                            <div class="mt-40 text-right pb-20">
-                                <button type="submit" class="btn btn-lg btn-primary w-200"> SUBMIT </button>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Email*</label>
+                                <input type="email" name="email" class="form-control input-lg" required placeholder="email@domain.com">
                             </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Phone Number</label>
+                                <input type="text" name="phone" class="form-control input-lg" placeholder="Phone Number">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-20">
+                        <div class="form-group">
+                            <label>Message</label>
+                            <textarea name="comment" rows="6" class="form-control" placeholder="Enter your message"></textarea>
+                        </div>
+
+                        <div class="mt-40 text-right pb-20">
+                            <button type="submit" class="btn btn-lg btn-primary w-200"> SUBMIT </button>
                         </div>
                     </div>
                 </form>
@@ -66,7 +62,7 @@
 
 
 
-                <div class="address">
+                {{-- <div class="address">
                     <div class="row">
                         <div class="col-sm-4">
                             <h4>SALES</h4>
@@ -96,7 +92,7 @@
                         </div>
                     </div>
 
-                </div>
+                </div> --}}
             </div>
         </section>
     </div>

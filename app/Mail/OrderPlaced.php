@@ -33,7 +33,7 @@ class OrderPlaced extends Mailable
 
         return $this->from('no-reply@japanesecarhistory.com', 'Japanese Car History')
         ->subject('Car History Request Received')
-        ->view('emails.order.placed')
-        ->attach($filename);
+        ->view('emails.order.placed');
+        // ->attach($filename);
     }
 }

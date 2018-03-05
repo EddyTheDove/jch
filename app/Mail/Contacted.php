@@ -32,8 +32,8 @@ class Contacted extends Mailable
     {
         return $this->from('contact@japanesecarhistory.com')
         ->subject('Contact Form')
-        // ->to('arslan@xmdmotors.com.au')
-        ->to('eddy.insearch@gmail.com')
+        ->to('arslan@xmdmotors.com.au')
+        // ->to('eddy.insearch@gmail.com')
         ->view('emails.contact.new');
     }
 }

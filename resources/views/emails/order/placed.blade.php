@@ -21,6 +21,6 @@
         as we can, and email you the report within the next 2 working days.
     </p>
 
-    <p>A payment invoice has been attached to this email.</p>
+    {{-- <p>A payment invoice has been attached to this email.</p> --}}
     <p>Thank you for your business</p>
 @endsection

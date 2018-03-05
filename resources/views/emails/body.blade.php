@@ -32,9 +32,9 @@
 
             <footer>
                 <ul>
-                    <li>XMD Motors Pty Ltd</li>
-                    <li>77 Parramatta Road Concord 2137</li>
-                    <li>1300 963 668</li>
+                    <li>Japanse Car History</li>
+                    {{-- <li>77 Parramatta Road Concord 2137</li>
+                    <li>1300 963 668</li> --}}
                 </ul>
             </footer>
 

@@ -49,12 +49,12 @@
             </a>
         </li>
 
-        <li class="{{ Request::is('admin/settings*') ? 'active' : '' }}">
+        {{-- <li class="{{ Request::is('admin/settings*') ? 'active' : '' }}">
             <a href="/admin/settings">
                 <i class="ion-android-options"></i>
                 Settings
             </a>
-        </li>
+        </li> --}}
 
         <li class="separer"></li>
 
