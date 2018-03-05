@@ -187,8 +187,8 @@
                             <label>PPSR</label>
                             <div class="form-group">
                                 {!! Form::select('ppsr',
-                                    ['0' => 'No', '1' => 'Yes'],
-                                    $order->status, ['class' => 'form-control input-lg']) !!}
+                                    [0 => 'No', 1 => 'Yes'],
+                                    $order->ppsr, ['class' => 'form-control input-lg']) !!}
                             </div>
 
                             <label>Status</label>
