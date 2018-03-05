@@ -31,7 +31,7 @@ class OrderPlaced extends Mailable
     {
         $filename = public_path('/storage/pdfs/' . $this->order->number . '.pdf');
 
-        return $this->from('no-reply@japanesecarhistory.com', 'Japanese Car History')
+        return $this->from('check@japanesecarhistory.com', 'Japanese Car History')
         ->subject('Car History Request Received')
         ->view('emails.order.placed');
         // ->attach($filename);
