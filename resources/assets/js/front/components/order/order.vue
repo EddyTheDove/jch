@@ -9,9 +9,9 @@
 
 
             <div class="col-sm-8 col-md-9">
-                <Report :report="report" @next="showCar" v-show="step == 1"></Report>
-                <JapanCar @next="showUser" v-show="step == 2"></JapanCar>
-                <UserDetails @next="showPayment" @previous="showCar" v-show="step == 3"></UserDetails>
+                <Report :report="report" @next="showCar" @showSample="showSample" v-show="step == 1"></Report>
+                <JapanCar @next="showUser" @showSample="showSample" v-show="step == 2"></JapanCar>
+                <UserDetails @next="showPayment" @previous="showCar" @showSample="showSample" v-show="step == 3"></UserDetails>
             </div>
         </div>
     </div>
@@ -65,6 +65,12 @@ export default {
         showPayment (user) {
             this.user = user
             this.submitForm()
+        },
+
+        showSample () {
+            if (this.report.sample) {
+                window.open(this.report.sample, '_blank')
+            }
         },
 
         getReportTypes () {

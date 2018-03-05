@@ -38,7 +38,7 @@
 
 
         <div class="text-center mt-20">
-            <button type="submit" class="btn btn-lg btn-primary">CONFIRM & PAY 110 AUD</button>
+            <button type="submit" class="btn btn-lg btn-primary">CONFIRM & PAY ${{ $report->amount }} AUD</button>
         </div>
     </form>
 </div>

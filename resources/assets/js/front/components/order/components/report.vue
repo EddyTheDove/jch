@@ -38,6 +38,10 @@ export default {
 
         nextStep () {
             this.$emit('next')
+        },
+
+        showSample () {
+            this.$emit('showSample')
         }
     }
 

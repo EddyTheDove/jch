@@ -70,4 +70,28 @@ class AuthController extends Controller
 
 
 
+
+    public function password(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'password'  => 'required',
+            'password_confirm' 	=> 'required|same:password'
+        ]);
+
+        if($validator->fails()) {
+            return redirect()->back()->withErrors(['validator' => 'Both passwords should match and not be empty']);
+        }
+
+        $user = User::find( $request->user_id);
+        if (!$user) {
+            abort(404);
+        }
+
+        $user->password = Hash::make($request->password);
+        $user->save();
+        return redirect()->back()->with('message', 'Password successfully changed');
+    }
+
+
+
 }

@@ -1,0 +1,42 @@
+<?php
+
+namespace App\Jobs;
+
+
+use App\Mail\OrderPlaced;
+use Illuminate\Bus\Queueable;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+
+class SendInvoiceEmail implements ShouldQueue
+{
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+
+    protected $order;
+    protected $invoiceLink;
+
+    /**
+     * Create a new job instance.
+     *
+     * @return void
+     */
+    public function __construct($order, $link)
+    {
+        $this->order = $order;
+        $this->invoiceLink = $link;
+    }
+
+    /**
+     * Execute the job.
+     *
+     * @return void
+     */
+    public function handle()
+    {
+        Mail::to($this->order)->send(new OrderPlaced($this->order))
+        ->attach($this->invoiceLink);
+    }
+}

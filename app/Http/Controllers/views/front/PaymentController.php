@@ -9,6 +9,7 @@ use App\Models\Report;
 use App\Mail\OrderPlaced;
 use Illuminate\Http\Request;
 use Cartalyst\Stripe\Stripe;
+use App\Jobs\SendInvoiceEmail;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Controller;
 
@@ -93,8 +94,10 @@ class PaymentController extends Controller
         ->save($filename);
 
         // Send email to the client
-        Mail::to($order->email)->send(new OrderPlaced($order))
-        ->attach($filename);
+
+        Mail::to($order->email)->send(new OrderPlaced($order));
+        // SendInvoiceEmail::dispatch($order, $filename)->onQueue('default');
+        // dispatch(new SendInvoiceEmail($order, $filename));
 
         // Redirect to thank you page
         return redirect()->route('thankyou')->with('message', 'Payment successfull. Your order has been placed');

@@ -27,12 +27,12 @@
             </a>
         </li>
 
-        <li class="{{ Request::is('admin/pages*') ? 'active' : '' }}">
+        {{-- <li class="{{ Request::is('admin/pages*') ? 'active' : '' }}">
             <a href="{{ route('pages.index' )}}">
                 <i class="ion-document-text"></i>
                 Pages
             </a>
-        </li>
+        </li> --}}
 
         <li class="{{ Request::is('admin/users*') ? 'active' : '' }}">
             <a href="/admin/users">

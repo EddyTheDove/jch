@@ -72,6 +72,7 @@ class OrderController extends Controller
         $order->postcode        = $request->postcode;
         $order->report_id       = $request->report_id;
         $order->ppsr            = $request->ppsr;
+        $order->status          = $request->status;
         $order->save();
 
         // Update car

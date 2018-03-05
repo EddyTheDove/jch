@@ -149,6 +149,10 @@ export default {
 
         previous () {
             this.$emit('previous')
+        },
+
+        showSample () {
+            this.$emit('showSample')
         }
     }
 }
