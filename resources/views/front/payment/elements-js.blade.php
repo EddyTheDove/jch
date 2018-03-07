@@ -107,6 +107,8 @@ function registerElements(elements, exampleName) {
             } else {
                 // Otherwise, un-disable inputs.
                 enableInputs();
+                savedErrors[idx] = result.error.message;
+                errorMessage.innerText = result.error.message;
             }
         });
     });
