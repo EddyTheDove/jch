@@ -1,6 +1,6 @@
 <script src="https://js.stripe.com/v3/"></script>
 <script type="text/javascript">
-var stripe = Stripe('pk_test_l2CNcKIbuabhTXfH9BKiES8V');
+var stripe = Stripe('pk_live_DWVzormYQfVhZH8QjFQ1bMrP');
 
 function registerElements(elements, exampleName) {
     var formClass = '.' + exampleName;
