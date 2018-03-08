@@ -49,8 +49,31 @@
                             <hr>
 
                             <h5 class="bold">Card Payment</h5>
-                            @include('front.payment.form')
+                            <div class="row">
+                                <div class="col-sm-12 col-md-9">
+                                    <form class="_form" method="post" action="/checkout" id="payment-form">
+                                        <div class="form-row">
+                                            <div id="card-element"></div>
+                                            <div id="card-errors" role="alert"></div>
+                                        </div>
 
+                                        <div class="fs-15 mt-10">
+                                            <a href="https://stripe.com" target="_blank">
+                                                <i class="ion-locked"></i>
+                                                Secure payments with Stripe
+                                            </a>
+                                        </div>
+
+                                        <div class="mt-20">
+                                            By confirming and paying, you agree to our <a href="/terms" target="_blank">Terms and conditions</a>
+                                        </div>
+
+                                        <button type="submit" class="btn btn-lg btn-primary mt-20">
+                                            CONFIRM & PAY ${{ $report->amount }} AUD
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     {{-- End of left side  --}}
@@ -76,5 +99,5 @@
 
 @section('js')
     @include('front.payment.elements-js')
-    @include('front.payment.payment-js')
+    {{-- @include('front.payment.payment-js') --}}
 @endsection

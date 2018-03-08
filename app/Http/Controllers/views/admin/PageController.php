@@ -85,7 +85,7 @@ class PageController extends Controller
             'slug'              => $slug,
             'tags'              => $request->tags,
             'image'             => $request->image,
-            'template'          => $request->template,
+            'template'          => 'default',
             'excerpt'           => $request->excerpt,
             'content'           => $request->content,
             'status'            => $request->status,

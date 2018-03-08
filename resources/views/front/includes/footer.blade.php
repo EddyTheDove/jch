@@ -26,6 +26,7 @@
                 <li><a href="/reports/intermediate">Intermediate Report</a></li>
                 <li><a href="/reports/full">Full Report</a></li>
                 <li><a href="/contact">Contact</a></li>
+                <li><a href="/terms">Terms & Conditions</a></li>
             </ul>
         </div>
     </div>

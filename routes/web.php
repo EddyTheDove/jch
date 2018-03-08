@@ -19,4 +19,5 @@ Route::get('pdfs/{name}', 'views\front\HomeController@pdfs')->name('pdfs');
 Route::get('thankyou', 'views\front\PaymentController@thankyou')->name('thankyou');
 Route::get('reports/{slug}', 'views\front\ReportController@show')->name('report');
 Route::get('contact', 'views\front\PageController@contact')->name('contact');
+Route::get('terms', 'views\front\PageController@terms')->name('terms');
 Route::post('contact', 'views\front\PageController@contactForm')->name('contact.form');

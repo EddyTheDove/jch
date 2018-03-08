@@ -70,7 +70,7 @@
             <div class="row">
                 <div class="col-sm-5">
                     <div class="form-group">
-                        <label>Address</label>
+                        <label>Address *</label>
                         <input type="text"
                             name="address"
                             class="form-control input-lg input-white"
@@ -83,7 +83,7 @@
 
                 <div class="col-sm-3">
                     <div class="form-group">
-                        <label>Suburb</label>
+                        <label>Suburb *</label>
                         <input type="text"
                             name="suburb"
                             class="form-control input-lg input-white"
@@ -96,7 +96,7 @@
 
                 <div class="col-sm-2">
                     <div class="form-group">
-                        <label>State</label>
+                        <label>State *</label>
                         <select class="form-control input-lg input-white" name="state" v-model="user.state">
                             <option v-for="s in states" :value="s">{{ s }}</option>
                         </select>
