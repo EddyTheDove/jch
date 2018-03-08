@@ -75,7 +75,9 @@
                             name="address"
                             class="form-control input-lg input-white"
                             placeholder="e.g: 23 Jump St"
+                            v-validate="'required'"
                             v-model="user.address">
+                            <span v-show="errors.has('address')" class="has-error">{{ errors.first('address') }}</span>
                     </div>
                 </div>
 
@@ -86,18 +88,25 @@
                             name="suburb"
                             class="form-control input-lg input-white"
                             placeholder="e.g: Liverpool"
+                            v-validate="'required'"
                             v-model="user.suburb">
+                            <span v-show="errors.has('suburb')" class="has-error">{{ errors.first('suburb') }}</span>
                     </div>
                 </div>
 
                 <div class="col-sm-2">
                     <div class="form-group">
                         <label>State</label>
-                        <input type="text"
+                        <select class="form-control input-lg input-white" name="state" v-model="user.state">
+                            <option v-for="s in states" :value="s">{{ s }}</option>
+                        </select>
+                        <!-- <input type="text"
                             name="state"
                             class="form-control input-lg input-white"
                             placeholder="e.g: NSW"
+                            v-validate="'required'"
                             v-model="user.state">
+                            <span v-show="errors.has('state')" class="has-error">{{ errors.first('state') }}</span> -->
                     </div>
                 </div>
 
@@ -108,7 +117,9 @@
                             name="postcode"
                             class="form-control input-lg input-white"
                             placeholder="e.g: 2000"
+                            v-validate="'required'"
                             v-model="user.postcode">
+                            <span v-show="errors.has('postcode')" class="has-error">{{ errors.first('postcode') }}</span>
                     </div>
                 </div>
             </div>
@@ -134,7 +145,10 @@ export default {
     name: 'ReportTypes',
 
     data: () => ({
-        user: {}
+        user: {
+            state: 'NSW'
+        },
+        states: ['ACT', 'NSW', 'NT', 'QLD', 'SA', 'TAS', 'VIC', 'WA']
     }),
 
     methods: {

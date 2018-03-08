@@ -58818,13 +58818,27 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'ReportTypes',
 
     data: function data() {
         return {
-            user: {}
+            user: {
+                state: 'NSW'
+            },
+            states: ['ACT', 'NSW', 'NT', 'QLD', 'SA', 'TAS', 'VIC', 'WA']
         };
     },
 
@@ -59142,6 +59156,12 @@ var render = function() {
               _c("input", {
                 directives: [
                   {
+                    name: "validate",
+                    rawName: "v-validate",
+                    value: "required",
+                    expression: "'required'"
+                  },
+                  {
                     name: "model",
                     rawName: "v-model",
                     value: _vm.user.address,
@@ -59163,7 +59183,23 @@ var render = function() {
                     _vm.$set(_vm.user, "address", $event.target.value)
                   }
                 }
-              })
+              }),
+              _vm._v(" "),
+              _c(
+                "span",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.errors.has("address"),
+                      expression: "errors.has('address')"
+                    }
+                  ],
+                  staticClass: "has-error"
+                },
+                [_vm._v(_vm._s(_vm.errors.first("address")))]
+              )
             ])
           ]),
           _vm._v(" "),
@@ -59173,6 +59209,12 @@ var render = function() {
               _vm._v(" "),
               _c("input", {
                 directives: [
+                  {
+                    name: "validate",
+                    rawName: "v-validate",
+                    value: "required",
+                    expression: "'required'"
+                  },
                   {
                     name: "model",
                     rawName: "v-model",
@@ -59195,7 +59237,23 @@ var render = function() {
                     _vm.$set(_vm.user, "suburb", $event.target.value)
                   }
                 }
-              })
+              }),
+              _vm._v(" "),
+              _c(
+                "span",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.errors.has("suburb"),
+                      expression: "errors.has('suburb')"
+                    }
+                  ],
+                  staticClass: "has-error"
+                },
+                [_vm._v(_vm._s(_vm.errors.first("suburb")))]
+              )
             ])
           ]),
           _vm._v(" "),
@@ -59203,27 +59261,45 @@ var render = function() {
             _c("div", { staticClass: "form-group" }, [
               _c("label", [_vm._v("State")]),
               _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.user.state,
-                    expression: "user.state"
-                  }
-                ],
-                staticClass: "form-control input-lg input-white",
-                attrs: { type: "text", name: "state", placeholder: "e.g: NSW" },
-                domProps: { value: _vm.user.state },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user.state,
+                      expression: "user.state"
                     }
-                    _vm.$set(_vm.user, "state", $event.target.value)
+                  ],
+                  staticClass: "form-control input-lg input-white",
+                  attrs: { name: "state" },
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.user,
+                        "state",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
                   }
-                }
-              })
+                },
+                _vm._l(_vm.states, function(s) {
+                  return _c("option", { domProps: { value: s } }, [
+                    _vm._v(_vm._s(s))
+                  ])
+                })
+              )
             ])
           ]),
           _vm._v(" "),
@@ -59233,6 +59309,12 @@ var render = function() {
               _vm._v(" "),
               _c("input", {
                 directives: [
+                  {
+                    name: "validate",
+                    rawName: "v-validate",
+                    value: "required",
+                    expression: "'required'"
+                  },
                   {
                     name: "model",
                     rawName: "v-model",
@@ -59255,7 +59337,23 @@ var render = function() {
                     _vm.$set(_vm.user, "postcode", $event.target.value)
                   }
                 }
-              })
+              }),
+              _vm._v(" "),
+              _c(
+                "span",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.errors.has("postcode"),
+                      expression: "errors.has('postcode')"
+                    }
+                  ],
+                  staticClass: "has-error"
+                },
+                [_vm._v(_vm._s(_vm.errors.first("postcode")))]
+              )
             ])
           ])
         ])
