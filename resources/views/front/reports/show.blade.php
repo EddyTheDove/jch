@@ -1,7 +1,7 @@
 @extends('front.templates.default')
 
 @section('head')
-    <title>Reports | Japanese Car History</title>
+    <title>{{ $report->name }} | Japanese Car History</title>
 
     <script>
         var _report = <?php echo json_encode($report) ?>;
