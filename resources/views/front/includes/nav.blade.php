@@ -14,6 +14,8 @@
                 <li class="{{ Request::is('reports/full') ? 'active' : '' }}"><a href="/reports/full"> Full Report</a></li>
                 <li class="{{ Request::is('contact') ? 'active' : '' }}"><a href="/contact">Contact</a></li>
             </ul>
+
+            <nav-right></nav-right>
         </div>
     </div>
 </nav>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\views\front;
 use PDF;
 use App\Models\Order;
 use App\Models\Report;
+use App\Helpers\Fixer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 

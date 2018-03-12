@@ -8,6 +8,9 @@
     <meta name="keywords" content="Japanese car history">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/assets/css/app.css') }}">
+    <script>
+        var _rates = <?php echo json_encode($rates) ?>;
+    </script>
     @yield('head')
 </head>
 <body>

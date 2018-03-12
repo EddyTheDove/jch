@@ -9,7 +9,7 @@
                     <i class="ion-chevron-right" v-if="isSelected(r)"></i>
                     {{ r.name }}
                 </span>
-                <span class="_radio-value"> ${{ r.amount }}</span>
+                <span class="_radio-value"> {{ r.amount | currency(rate) }}</span>
             </div>
         </div>
     </div>
@@ -19,6 +19,16 @@
 export default {
     name: 'ReportTypes',
     props: ['reports', 'report'],
+
+    computed: {
+        currency () {
+            return this.$store.state.currency
+        },
+
+        rate () {
+            return this.currency.rate
+        }
+    },
 
     methods: {
         isSelected (r) {
