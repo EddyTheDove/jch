@@ -35,12 +35,7 @@
                                             <li><strong>{{ $user->firstname . ' ' . $user->lastname }}</strong> </li>
                                             <li><strong>Email:</strong> {{ $user->email }}</li>
                                             <li><strong>Mobile:</strong> {{ $user->mobile }}</li>
-
-                                            @if (isset($user->address))
-                                            <li><strong>Address:</strong> {{ $user->address . ', ' . $user->suburb . ', ' . $user->state . ', ' . $user->postcode }}</li>
-                                            @else
-                                                <li><strong>Address:</strong> N/A</li>
-                                            @endif
+                                            <li><strong>Location:</strong> {{ $user->suburb . ', ' .$user->country }}</li>
                                         </ul>
                                     </div>
                                 </div>
