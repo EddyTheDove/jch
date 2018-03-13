@@ -36,6 +36,35 @@
                 </div>
             </div>
 
+
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Country *</label>
+                        <select class="form-control input-lg input-white" name="country" v-model="user.country">
+                            <option v-for="c in countries" :value="c.name">{{ c.name }}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>City *</label>
+                        <input type="text"
+                            name="city"
+                            class="form-control input-lg input-white"
+                            placeholder="e.g: Sydney"
+                            v-validate="'required'"
+                            v-model="user.suburb">
+                            <span v-show="errors.has('city')" class="has-error">{{ errors.first('city') }}</span>
+                    </div>
+                </div>
+            </div>
+            <!-- End of country & city  -->
+
+
+
             <!-- Contacts  -->
             <div class="row">
                 <div class="col-sm-6">
@@ -65,65 +94,6 @@
                 </div>
             </div>
             <!-- End of contacts  -->
-
-
-            <div class="row">
-                <div class="col-sm-5">
-                    <div class="form-group">
-                        <label>Address *</label>
-                        <input type="text"
-                            name="address"
-                            class="form-control input-lg input-white"
-                            placeholder="e.g: 23 Jump St"
-                            v-validate="'required'"
-                            v-model="user.address">
-                            <span v-show="errors.has('address')" class="has-error">{{ errors.first('address') }}</span>
-                    </div>
-                </div>
-
-                <div class="col-sm-3">
-                    <div class="form-group">
-                        <label>Suburb *</label>
-                        <input type="text"
-                            name="suburb"
-                            class="form-control input-lg input-white"
-                            placeholder="e.g: Liverpool"
-                            v-validate="'required'"
-                            v-model="user.suburb">
-                            <span v-show="errors.has('suburb')" class="has-error">{{ errors.first('suburb') }}</span>
-                    </div>
-                </div>
-
-                <div class="col-sm-2">
-                    <div class="form-group">
-                        <label>State *</label>
-                        <select class="form-control input-lg input-white" name="state" v-model="user.state">
-                            <option v-for="s in states" :value="s">{{ s }}</option>
-                        </select>
-                        <!-- <input type="text"
-                            name="state"
-                            class="form-control input-lg input-white"
-                            placeholder="e.g: NSW"
-                            v-validate="'required'"
-                            v-model="user.state">
-                            <span v-show="errors.has('state')" class="has-error">{{ errors.first('state') }}</span> -->
-                    </div>
-                </div>
-
-                <div class="col-sm-2">
-                    <div class="form-group">
-                        <label>Postcode</label>
-                        <input type="text"
-                            name="postcode"
-                            class="form-control input-lg input-white"
-                            placeholder="e.g: 2000"
-                            v-validate="'required'"
-                            v-model="user.postcode">
-                            <span v-show="errors.has('postcode')" class="has-error">{{ errors.first('postcode') }}</span>
-                    </div>
-                </div>
-            </div>
-            <!-- End of address  -->
         </form>
 
         <div class="order-btns mt-40">
@@ -146,10 +116,25 @@ export default {
 
     data: () => ({
         user: {
-            state: 'NSW'
+            country: ''
         },
-        states: ['ACT', 'NSW', 'NT', 'QLD', 'SA', 'TAS', 'VIC', 'WA']
+        countries: []
     }),
+
+    mounted () {
+        this.countries = _countries
+        this.user.country = this.countries[12].name
+    },
+
+    watch: {
+        'user.country': function (val) {
+            this.countries.forEach(c => {
+                if (c.name === val) {
+                    this.user.mobile = c.phone + ' '
+                }
+            })
+        }
+    },
 
     methods: {
         async nextStep () {

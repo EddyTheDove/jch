@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('/assets/css/app.css') }}">
 
     <script>
+        var _countries = <?php echo json_encode($countries) ?>;
         var _reports = <?php echo json_encode($reports) ?>;
         var _rates = <?php echo json_encode($rates) ?>;
     </script>

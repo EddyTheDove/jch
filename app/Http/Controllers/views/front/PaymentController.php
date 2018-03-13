@@ -133,10 +133,8 @@ class PaymentController extends Controller
             'email'         => $user->email,
             'mobile'        => $user->mobile,
             'ppsr'          => $car->ppsr,
-            'address'       => $user->address ?: '',
+            'country'       => $user->country ?: '',
             'suburb'        => $user->suburb ?: '',
-            'state'         => $user->state ?: '',
-            'postcode'      => $user->postcode ?: '',
             'stripe_charge_id' => $charge['id'],
             'status'        => 'placed',
         ]);

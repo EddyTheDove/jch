@@ -6,6 +6,7 @@
     <script>
         var _report = <?php echo json_encode($report) ?>;
         var _reports = <?php echo json_encode($reports) ?>;
+        var _countries = <?php echo json_encode($countries) ?>;
     </script>
 @endsection
 
