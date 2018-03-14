@@ -12,7 +12,10 @@ let mix = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/app.js', 'public/assets/js')
-mix.sass('resources/assets/sass/app.scss', 'public/assets/css');
+mix.sass('resources/assets/sass/app.scss', 'public/assets/css')
+.options({
+    processCssUrls: false
+});
 
 // admin assets
 
@@ -23,3 +26,8 @@ mix.sass('resources/assets/sass/app.scss', 'public/assets/css');
 //         'node_modules/bootstrap-tokenfield/dist/bootstrap-tokenfield.js'
 //     ], 'public/backend/js/scripts.js')
 //     .sass('resources/assets/sass/admin.scss', 'public/backend/css');
+
+
+if (mix.inProduction()) {
+    mix.version();
+}
