@@ -31,5 +31,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin_auth', 'admin']], fun
     Route::resource('posts', 'views\admin\PostController');
     Route::resource('orders', 'views\admin\OrderController');
     Route::resource('reports', 'views\admin\ReportController');
+    Route::resource('coupons', 'views\admin\CouponController');
 
 });

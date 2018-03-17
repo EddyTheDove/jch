@@ -42,6 +42,14 @@
         </li>
 
 
+        <li class="{{ Request::is('admin/coupons*') ? 'active' : '' }}">
+            <a href="/admin/coupons">
+                <i class="ion-cash"></i>
+                Coupons
+            </a>
+        </li>
+
+
         <li class="{{ Request::is('admin/files*') ? 'active' : '' }}">
             <a href="/admin/files">
                 <i class="ion-folder"></i>
