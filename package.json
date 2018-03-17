@@ -23,5 +23,8 @@
         "v-tooltip": "^2.0.0-rc.31",
         "vee-validate": "^2.0.3",
         "vue": "^2.5.7"
+    },
+    "dependencies": {
+        "vuex": "^3.0.1"
     }
 }

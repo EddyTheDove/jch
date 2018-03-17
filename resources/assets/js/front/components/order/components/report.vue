@@ -2,7 +2,7 @@
     <div class="_order">
         <h3 class="bold">{{ report.name }}</h3>
         <h4 class="bold primary mt-10">
-            ${{ report.amount }} AUD
+            {{ report.amount | currency(rate, true) }}
             <span class="teal">
                 <i class="ion-minus fs-14"></i> Includes PPSR
             </span>
@@ -30,6 +30,16 @@
 export default {
     name: 'Report',
     props: ['report'],
+
+    computed: {
+        currency () {
+            return this.$store.state.currency
+        },
+
+        rate () {
+            return this.currency.rate
+        }
+    },
 
     methods: {
         showSample () {

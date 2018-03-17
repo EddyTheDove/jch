@@ -4,8 +4,10 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+import store from './front/store/store'
 
 require('./bootstrap')
+require('./filters')
 window.Vue = require('vue')
 window.eventBus = new Vue()
 
@@ -17,7 +19,9 @@ Vue.use(VeeValidate)
 require('./ui')
 
 Vue.component('new-order', require('./front/components/order/order'))
+Vue.component('nav-right', require('./front/components/nav/right'))
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    store
 });
