@@ -1,6 +1,7 @@
 <script src="https://js.stripe.com/v3/"></script>
 <script type="text/javascript">
-var stripe = Stripe('pk_live_DWVzormYQfVhZH8QjFQ1bMrP')
+// var stripe = Stripe('pk_live_DWVzormYQfVhZH8QjFQ1bMrP')
+var stripe = Stripe('pk_test_l2CNcKIbuabhTXfH9BKiES8V') // test
 
 // Create an instance of Elements.
 var elements = stripe.elements()
@@ -56,4 +57,13 @@ form.addEventListener('submit', function(event) {
         }
     })
 })
+
+function stripeTokenHandler(token) {
+    var hiddenInput = document.createElement('input')
+    hiddenInput.setAttribute('type', 'hidden')
+    hiddenInput.setAttribute('name', 'stripeToken')
+    hiddenInput.setAttribute('value', token.id)
+    form.appendChild(hiddenInput)
+    form.submit()
+}
 </script>

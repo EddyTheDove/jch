@@ -52,10 +52,14 @@
                             <div class="row">
                                 <div class="col-sm-12 col-md-9">
                                     <form class="_form" method="post" action="/checkout" id="payment-form">
+                                        {{ csrf_field() }}
+                                        
                                         <div class="form-row">
                                             <div id="card-element"></div>
                                             <div id="card-errors" role="alert"></div>
                                         </div>
+
+                                        <coupon-input></coupon-input>
 
                                         <div class="fs-15 mt-10">
                                             <a href="https://stripe.com" target="_blank">

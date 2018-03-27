@@ -36,9 +36,9 @@ export default {
         discount () {
             if (this.coupon.value) {
                 if (this.coupon.type ===  'percentage') {
-                    return this.coupon.value + '% OFF'
+                    return this.coupon.value + '%'
                 } else {
-                    return this.coupon.value + 'AUD OFF'
+                    return '$' + this.coupon.value + ' AUD'
                 }
             }
             return 0

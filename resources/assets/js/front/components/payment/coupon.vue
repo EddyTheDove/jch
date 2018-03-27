@@ -71,8 +71,7 @@ export default {
         getCoupon () {
             if (this.ghost.coupon.length > 1) {
                 this.isLoading = true
-                this.coupon = {}
-                this.errorMessage = ''
+                this.reset()
 
                 axios.get(`api/v1/coupons/${ this.ghost.coupon }`)
                 .then(response => {
@@ -103,10 +102,21 @@ export default {
             if (this.coupon.type === 'percentage') {
                 total = (this.report.amount - ((this.coupon.value * this.report.amount) / 100)).toFixed(2)
                 this.couponMessage += this.coupon.value + '% OFF. New total is ' + total
+            } else {
+                total = (this.report.amount - this.coupon.value).toFixed(2)
+                this.couponMessage += this.coupon.value + ' AUD OFF. New total is ' + total
             }
 
             this.$store.commit('SET_COUPON', this.coupon)
             this.$store.commit('SET_TOTAL', total)
+        },
+
+        reset () {
+            this.couponMessage = ''
+            this.coupon = {}
+            this.errorMessage = ''
+            this.$store.commit('SET_COUPON', '')
+            this.$store.commit('SET_TOTAL', this.report.total)
         }
     }
 }

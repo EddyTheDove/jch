@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\views\front;
 
 use PDF;
+use Carbon\Carbon;
 use App\Models\Car;
 use App\Models\Order;
 use App\Models\Report;
+use App\Models\Coupon;
 use App\Mail\OrderPlaced;
 use Illuminate\Http\Request;
 use Cartalyst\Stripe\Stripe;
@@ -68,10 +70,20 @@ class PaymentController extends Controller
         $user = (object) $saved['user'];
         $report = Report::find($saved['report']['id']);
 
+        // Apply coupons
+        $coupon = null;
+        $amount = $report->fullAmount();
+        if ($request->coupon) {
+            $coupon = Coupon::where('name', $request->coupon)->first();
+            if ($coupon) {
+                $amount = $this->applyCoupon($coupon, $report);
+            }
+        }
+
         // charge client's credit car
         $charge = $stripe->charges()->create([
             'currency' => 'aud',
-            'amount'   => $report->fullAmount(),
+            'amount'   => $amount,
             'source'   => $request->stripeToken,
             'description' => $report->name,
             'metadata' => [
@@ -86,7 +98,7 @@ class PaymentController extends Controller
         $savedCar = $this->saveCar($car);
 
         // Place new order for the client
-        $order = $this->placeOrder($report, $user, $savedCar, $charge, $car);
+        $order = $this->placeOrder($report, $user, $savedCar, $charge, $car, $amount, $coupon);
 
         // Generate invoice
         $filename = public_path('/storage/pdfs/' . $order->number . '.pdf');
@@ -114,7 +126,7 @@ class PaymentController extends Controller
      * @param  [type] $charge [description]
      * @return [type]         [description]
      */
-    private function placeOrder ($report, $user, $savedCar, $charge, $car)
+    private function placeOrder ($report, $user, $savedCar, $charge, $car, $amount, $coupon = null)
     {
         $number = 1001101;
         $lastOrder = Order::orderBy('id', 'desc')->first();
@@ -127,7 +139,7 @@ class PaymentController extends Controller
             'number'        => $number,
             'report_id'     => $report->id,
             'cart_id'       => $savedCar->id,
-            'amount'        => $report->amount,
+            'amount'        => $amount,
             'firstname'     => $user->firstname,
             'lastname'      => $user->lastname,
             'email'         => $user->email,
@@ -137,6 +149,7 @@ class PaymentController extends Controller
             'suburb'        => $user->suburb ?: '',
             'stripe_charge_id' => $charge['id'],
             'status'        => 'placed',
+            'coupon_id'     => $coupon ? $coupon->id : null
         ]);
     }
 
@@ -158,5 +171,29 @@ class PaymentController extends Controller
             'australian_vin'    => $car->australian_vin,
             'original_colour'   => $car->colour
         ]);
+    }
+
+
+
+    private function applyCoupon ($coupon, $report)
+    {
+        $total = $report->fullAmount();
+        if ($coupon->nb_use >= $coupon->max_use) {
+            return $total;
+        }
+        if (Carbon::parse($coupon->expiry)->isPast()) {
+            return $total;
+        }
+
+        $coupon->nb_use = $coupon->nb_use + 1;
+        $coupon->save();
+
+        if ($coupon->type === 'percentage') {
+            return $total - ($coupon->value * $total) / 100;
+        } else {
+            return $total - $coupon->value * 100;
+        }
+
+        return $total;
     }
 }
