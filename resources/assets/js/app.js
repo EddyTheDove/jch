@@ -20,6 +20,8 @@ require('./ui')
 
 Vue.component('new-order', require('./front/components/order/order'))
 Vue.component('nav-right', require('./front/components/nav/right'))
+Vue.component('apply-coupon', require('./front/components/payment/coupon'))
+Vue.component('order-summary', require('./front/components/payment/summary'))
 
 const app = new Vue({
     el: '#app',

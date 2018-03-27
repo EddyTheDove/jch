@@ -11,16 +11,19 @@ let mix = require('laravel-mix');
  |
  */
 
-// mix.js('resources/assets/js/app.js', 'public/assets/js')
-// mix.sass('resources/assets/sass/app.scss', 'public/assets/css');
+mix.js('resources/assets/js/app.js', 'public/assets/js')
+mix.sass('resources/assets/sass/app.scss', 'public/assets/css');
+if (mix.inProduction()) {
+   mix.version();
+}
 
 // admin assets
 
-mix.js('resources/assets/js/admin.js', 'public/backend/js')
-    .scripts([
-        'node_modules/speakingurl/lib/speakingurl.js',
-        'node_modules/jquery-slugify/dist/slugify.js',
-        'node_modules/bootstrap-tokenfield/dist/bootstrap-tokenfield.js',
-        'node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.js'
-    ], 'public/backend/js/scripts.js')
-    .sass('resources/assets/sass/admin.scss', 'public/backend/css');
+// mix.js('resources/assets/js/admin.js', 'public/backend/js')
+//     .scripts([
+//         'node_modules/speakingurl/lib/speakingurl.js',
+//         'node_modules/jquery-slugify/dist/slugify.js',
+//         'node_modules/bootstrap-tokenfield/dist/bootstrap-tokenfield.js',
+//         'node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.js'
+//     ], 'public/backend/js/scripts.js')
+//     .sass('resources/assets/sass/admin.scss', 'public/backend/css');

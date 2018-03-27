@@ -2,6 +2,9 @@
 
 @section('head')
     <title>Checkout | Japanese Car History</title>
+    <script>
+        var _report = <?php echo json_encode($report);?>;
+    </script>
 @endsection
 
 @section('body')
@@ -43,6 +46,8 @@
 
                             <hr>
 
+                            <apply-coupon></apply-coupon>
+
                             <h5 class="bold">Card Payment</h5>
                             <div class="row">
                                 <div class="col-sm-12 col-md-9">
@@ -63,8 +68,8 @@
                                             By confirming and paying, you agree to our <a href="/terms" target="_blank">Terms and conditions</a>
                                         </div>
 
-                                        <button type="submit" class="btn btn-lg btn-primary mt-20">
-                                            CONFIRM & PAY ${{ $report->amount }} AUD
+                                        <button type="submit" class="btn btn-lg btn-primary mt-20 w-200">
+                                            CONFIRM & PAY
                                         </button>
                                     </form>
                                 </div>
@@ -75,16 +80,7 @@
 
 
                     <div class="col-sm-3">
-                        <div class="_block _block-radius _block-grey elevated">
-                            <div class="_block-title">
-                                ORDER SUMMARY
-                            </div>
-
-                            <div class="pl-20 pb-20">
-                                <h5>{{ $report->name }}</h5>
-                                <h5 class="fw-500">Total: ${{ $report->amount }} AUD</h5>
-                            </div>
-                        </div>
+                        <order-summary></order-summary>
                     </div>
                 </div>
             </div>
@@ -94,5 +90,4 @@
 
 @section('js')
     @include('front.payment.elements-js')
-    {{-- @include('front.payment.payment-js') --}}
 @endsection
