@@ -90,6 +90,8 @@ export default {
                 })
                 .catch(error => {
                     console.log(error)
+                    this.isLoading = false
+                    this.errorMessage = 'The specified coupon does not exist.'
                 })
             }
         },
