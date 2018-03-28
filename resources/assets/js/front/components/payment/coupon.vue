@@ -118,7 +118,7 @@ export default {
             this.coupon = {}
             this.errorMessage = ''
             this.$store.commit('SET_COUPON', '')
-            this.$store.commit('SET_TOTAL', this.report.total)
+            this.$store.commit('SET_TOTAL', this.report.amount)
         }
     }
 }
