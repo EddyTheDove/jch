@@ -70,15 +70,24 @@ class PaymentController extends Controller
         $user = (object) $saved['user'];
         $report = Report::find($saved['report']['id']);
 
+
         // Apply coupons
         $coupon = null;
         $amount = $report->fullAmount();
         if ($request->coupon) {
             $coupon = Coupon::where('name', $request->coupon)->first();
             if ($coupon) {
+                if (!$coupon->status) {
+                    return redirect()->back()->withErrors(['coupon' => 'The coupon is invalid']);
+                } else if ($coupon->isExpired()) {
+                    return redirect()->back()->withErrors(['coupon' => 'The coupon has expired']);
+                } else if ($coupon->isUsed()) {
+                    return redirect()->back()->withErrors(['coupon' => 'The coupon has been used to its maximum capacity']);
+                }
                 $amount = $this->applyCoupon($coupon, $report);
             }
         }
+
 
         // charge client's credit car
         $charge = $stripe->charges()->create([

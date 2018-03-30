@@ -77063,6 +77063,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                         if (_this.coupon.nb_use >= _this.coupon.max_use) {
                             _this.errorMessage = 'The specified coupon has been used to its maximum capacity';
+                        } else if (_this.coupon.status == 0) {
+                            _this.errorMessage = 'The specified coupon is invalid';
                         } else if (__WEBPACK_IMPORTED_MODULE_1_moment___default()(_this.coupon.expiry).isBefore(__WEBPACK_IMPORTED_MODULE_1_moment___default()())) {
                             _this.errorMessage = 'The specified coupon already expired';
                         } else {
@@ -77097,7 +77099,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.coupon = {};
             this.errorMessage = '';
             this.$store.commit('SET_COUPON', '');
-            this.$store.commit('SET_TOTAL', this.report.total);
+            this.$store.commit('SET_TOTAL', this.report.amount);
         }
     }
 });
