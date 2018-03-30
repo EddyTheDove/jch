@@ -14,6 +14,7 @@ use Cartalyst\Stripe\Stripe;
 use App\Jobs\SendInvoiceEmail;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Controller;
+use Cartalyst\Stripe\Exception\CardErrorException;
 
 
 class PaymentController extends Controller
@@ -90,18 +91,22 @@ class PaymentController extends Controller
 
 
         // charge client's credit car
-        $charge = $stripe->charges()->create([
-            'currency' => 'aud',
-            'amount'   => $amount,
-            'source'   => $request->stripeToken,
-            'description' => $report->name,
-            'metadata' => [
-                'firstname' => $user->firstname,
-                'lastname'  => $user->firstname,
-                'email'     => $user->email,
-                'mobile'    => $user->mobile
-            ]
-        ]);
+        try {
+            $charge = $stripe->charges()->create([
+                'currency' => 'aud',
+                'amount'   => $amount,
+                'source'   => $request->stripeToken,
+                'description' => $report->name,
+                'metadata' => [
+                    'firstname' => $user->firstname,
+                    'lastname'  => $user->firstname,
+                    'email'     => $user->email,
+                    'mobile'    => $user->mobile
+                ]
+            ]);
+        } catch (CardErrorException $e) {
+            return redirect()->back()->withErrors([ 'stripe' => $e->getMessage() ]);
+        }
 
         // save client's car
         $savedCar = $this->saveCar($car);
