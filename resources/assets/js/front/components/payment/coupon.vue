@@ -80,6 +80,8 @@ export default {
 
                         if (this.coupon.nb_use >= this.coupon.max_use) {
                             this.errorMessage = 'The specified coupon has been used to its maximum capacity'
+                        } else if (this.coupon.status == 0) {
+                            this.errorMessage = 'The specified coupon is invalid'
                         } else if (moment(this.coupon.expiry).isBefore(moment())) {
                             this.errorMessage = 'The specified coupon already expired'
                         } else {
@@ -90,6 +92,8 @@ export default {
                 })
                 .catch(error => {
                     console.log(error)
+                    this.isLoading = false
+                    this.errorMessage = 'The specified coupon does not exist.'
                 })
             }
         },
@@ -116,7 +120,7 @@ export default {
             this.coupon = {}
             this.errorMessage = ''
             this.$store.commit('SET_COUPON', '')
-            this.$store.commit('SET_TOTAL', this.report.total)
+            this.$store.commit('SET_TOTAL', this.report.amount)
         }
     }
 }
