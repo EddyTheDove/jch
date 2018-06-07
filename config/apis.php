@@ -15,7 +15,8 @@ return [
     */
 
     'fixer' => [
-        'url' => "http://api.fixer.io"
+        'url' => "https://www.amdoren.com/api/currency.php",
+        'key' => env('AMDOREM_KEY', '')
     ],
 
     'avto' => [
